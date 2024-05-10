@@ -1,58 +1,96 @@
-<div class="container-box">
-  <div class="user-box">
-    <h2>{{ userDetails.name }}</h2>
-    <hr />
-    <div class="row" *ngIf="keys(userDetails).length">
-      <div class="col-md-12">
-        <p>Username:{{ userDetails.username }}</p>
-      </div>
-      <div class="col-md-12">
-        <p>Email:{{ userDetails.email }}</p>
-      </div>
-      <div class="col-md-12">
-        <p>
-          Address:{{
-            userDetails.address.street +
-              ", " +
-              userDetails.address.city +
-              ", " +
-              userDetails.address.zipcode
-          }}
-        </p>
-      </div>
-      <div class="col-md-12">
-        <p>Phone:{{ userDetails.phone }}</p>
-      </div>
-      <div class="col-md-12">
-        <p>Website:{{ userDetails.website }}</p>
-      </div>
-      <div class="col-md-12">
-        <p>Company:{{ userDetails.company.name }}</p>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="container-box">
-  <div class="row post-box">
-    <div class="col-md-12">
-      <h2>Post List</h2>
-      <div class="row single-post" *ngFor="let singlePost of postList">
-        <div class="col-md-12">
-          <h3>{{ singlePost.title }}</h3>
-          <p>{{ singlePost.body }}</p>
-        </div>
-      </div>
-    </div>
+<div class="d-flex justify-content-center">
+  <div
+    class="spinner-border text-primary"
+    role="status"
+    *ngIf="showLoader; else loadingDoneTemplate"
+  >
+    <span class="visually-hidden">Loading...</span>
   </div>
 </div>
 
-<div class="album-box">
-  <h2>Album List</h2>
-  <div class="container-box">
-    <div class="row user-box" *ngFor="let singleAlbum of albumList">
-      <div class="col-md-12">
-        <h4>{{ singleAlbum.title }}</h4>
+<ng-template #loadingDoneTemplate>
+  <div
+    class="alert alert-danger"
+    role="alert"
+    *ngIf="hasError; else userLoadedTemplate"
+  >
+    <i class="bi bi-exclamation-triangle-fill"></i> Error occurred! Couldn't
+    fetch user details...
+  </div>
+  <ng-template #userLoadedTemplate>
+    <div class="row">
+      <div class="col-6">
+        <div class="row">
+          <div class="col-12">
+            <div class="card mb-4" *ngIf="keys(userDetails).length">
+              <div class="card-header">
+                <h2>{{ userDetails.name }}</h2>
+              </div>
+              <div class="card-body">
+                <div class="card-item">
+                  <p>Username:{{ userDetails.username }}</p>
+                </div>
+                <div class="card-item">
+                  <p>Email:{{ userDetails.email }}</p>
+                </div>
+                <div class="card-item">
+                  <p>
+                    Address:{{
+                      userDetails.address.street +
+                        ", " +
+                        userDetails.address.city +
+                        ", " +
+                        userDetails.address.zipcode
+                    }}
+                  </p>
+                </div>
+                <div class="card-item">
+                  <p>Phone:{{ userDetails.phone }}</p>
+                </div>
+                <div class="card-item">
+                  <p>Website:{{ userDetails.website }}</p>
+                </div>
+                <div class="card-item">
+                  <p>Company:{{ userDetails.company.name }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12" *ngIf="albumList.length">
+            <h2>Album List</h2>
+            <div class="album-box row">
+              <div class="col-4" *ngFor="let singleAlbum of albumList">
+                <div class="card">
+                  <img
+                    class="card-img-top"
+                    src="../../../assets/images/placeholder.jpg"
+                    alt="Card image cap"
+                  />
+                  <div class="card-body">
+                    <div class="card-text">
+                      {{ singleAlbum.title }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <h2>Post List</h2>
+        <div
+          class="card mb-3"
+          *ngFor="let singlePost of postList; let i = index"
+        >
+          <div class="card-header">#{{ i + 1 + ". " + singlePost.title }}</div>
+          <div class="card-body">
+            <div class="card-text">
+              {{ singlePost.body }}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
+  </ng-template>
+</ng-template>

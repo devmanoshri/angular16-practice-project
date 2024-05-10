@@ -1,12 +1,29 @@
-<!-- <pre>{{ userList | json }}</pre> -->
-
-<div class="p4">
-  <h1><i class="bi bi-people"></i> User list</h1>
-  <div class="row" *ngFor="let userData of userList">
-    <div class="col-md-12">
-      <a [routerLink]="['/user/details', userData.id]">
-        {{ userData.name }}
-      </a>
-    </div>
+<div
+  class="d-flex justify-content-center"
+  *ngIf="showLoader; else userListLoaded"
+>
+  <div class="spinner-border" role="status">
+    <span class="visually-hidden">Loading...</span>
   </div>
 </div>
+<div class="alert alert-danger" role="alert" *ngIf="hasError">
+  <i class="bi bi-exclamation-triangle-fill"></i> Error occurred! Couldn't fetch
+  user list...
+</div>
+<ng-template #userListLoaded>
+  <div class="p4">
+    <h1><i class="bi bi-people"></i> User list</h1>
+    <div class="card mb-3" *ngFor="let userData of userList">
+      <div class="card-body">
+        <h5 class="card-title">
+          <a [routerLink]="['/user/details', userData.id]">
+            {{ userData.name }}
+          </a>
+        </h5>
+      </div>
+    </div>
+  </div>
+</ng-template>
+<button class="btn btn-primary" (click)="fetchUserList()">
+  Fetch User List
+</button>
