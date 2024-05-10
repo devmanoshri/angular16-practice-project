@@ -1,0 +1,17 @@
+.comment-box {
+  border: 2px solid rgba(0, 0, 0, 0.263);
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.new-comment-box {
+  border: 1px solid rgba(0, 0, 0, 0.263);
+  padding: 15px 10px;
+  margin-bottom: 10px;
+}
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+span.error-text {
+  color: red;
+}

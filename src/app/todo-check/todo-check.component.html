@@ -1,0 +1,21 @@
+<h3>Todo List</h3>
+<div class="rox">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#Use Id</th>
+        <th scope="col">id</th>
+        <th scope="col">title</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let todo of todoList">
+        <tr>
+          <td>{{ todo.userId }}</td>
+          <td>{{ todo.id }}</td>
+          <td>{{ todo.title }}</td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="row new-comment-box">
+    <form [formGroup]="commentForm" (ngSubmit)="onSubmit()">
+      <h3>New Comment</h3>
+      <div class="row">
+        <div class="col-md-12">
+          <label class="form-label" for="name">Name</label>
+          <input type="text" class="form-control" formControlName="name" />
+          <span
+            class="error-text"
+            *ngIf="
+              commentForm.get('name')?.invalid &&
+              commentForm.get('name')?.touched
+            "
+            >Please enter name!</span
+          >
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <label class="form-label" for="email">Email</label>
+          <input type="text" class="form-control" formControlName="email" />
+          <span
+            class="error-text"
+            *ngIf="
+              commentForm.get('email')?.invalid &&
+              commentForm.get('email')?.touched
+            "
+            >Please enter email!</span
+          >
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <label class="form-label" for="comment">Enter Comment</label>
+          <textarea class="form-control" formControlName="comment"></textarea>
+          <span
+            class="error-text"
+            *ngIf="
+              commentForm.get('comment')?.invalid &&
+              commentForm.get('comment')?.touched
+            "
+            >Please enter comment!</span
+          >
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+
+  <hr />
+  <h3>{{ commentsList.length }} Comments</h3>
+  <div class="row comment-box" *ngFor="let comment of commentsList">
+    <h4 class="media-heading">{{ comment.name }}</h4>
+    <h5>{{ comment.email }}</h5>
+    <p>
+      {{ comment.body }}
+    </p>
+  </div>
+</div>

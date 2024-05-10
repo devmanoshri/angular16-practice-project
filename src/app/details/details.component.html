@@ -1,0 +1,21 @@
+<p>details works!</p>
+<label> Enter Todo</label>
+<input type="text" class="form-control" (input)="onUpdateServerName($event)" />
+<input type="text" class="form-control" />
+
+<p>{{ todoName }}</p>
+<button
+  class="btn btn-primary"
+  [disabled]="!allowShowDetails"
+  (click)="onShowDetails()"
+>
+  Show Todo
+</button>
+<p>{{ todoDetails }}</p>
+<pre>{{ todo$ | async | json }}</pre>
+
+<hr />
+
+<input type="text" class="form-control" />
+<button class="btn btn-success" [disabled]="userName === ''">Reset</button>
+<p>{{ userName }}</p>

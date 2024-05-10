@@ -1,0 +1,58 @@
+<div class="container-box">
+  <div class="user-box">
+    <h2>{{ userDetails.name }}</h2>
+    <hr />
+    <div class="row" *ngIf="keys(userDetails).length">
+      <div class="col-md-12">
+        <p>Username:{{ userDetails.username }}</p>
+      </div>
+      <div class="col-md-12">
+        <p>Email:{{ userDetails.email }}</p>
+      </div>
+      <div class="col-md-12">
+        <p>
+          Address:{{
+            userDetails.address.street +
+              ", " +
+              userDetails.address.city +
+              ", " +
+              userDetails.address.zipcode
+          }}
+        </p>
+      </div>
+      <div class="col-md-12">
+        <p>Phone:{{ userDetails.phone }}</p>
+      </div>
+      <div class="col-md-12">
+        <p>Website:{{ userDetails.website }}</p>
+      </div>
+      <div class="col-md-12">
+        <p>Company:{{ userDetails.company.name }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-box">
+  <div class="row post-box">
+    <div class="col-md-12">
+      <h2>Post List</h2>
+      <div class="row single-post" *ngFor="let singlePost of postList">
+        <div class="col-md-12">
+          <h3>{{ singlePost.title }}</h3>
+          <p>{{ singlePost.body }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="album-box">
+  <h2>Album List</h2>
+  <div class="container-box">
+    <div class="row user-box" *ngFor="let singleAlbum of albumList">
+      <div class="col-md-12">
+        <h4>{{ singleAlbum.title }}</h4>
+      </div>
+    </div>
+  </div>
+</div>

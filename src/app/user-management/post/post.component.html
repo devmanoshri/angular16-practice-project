@@ -1,0 +1,8 @@
+<h2>Post List{{selectedUserId}}</h2>
+<hr />
+<div class="row single-post" *ngFor="let singlePost of selectedUserPostList">
+  <div class="col-md-12">
+    <h3>{{ singlePost.title }}</h3>
+    <p>{{ singlePost.body }}</p>
+  </div>
+</div>

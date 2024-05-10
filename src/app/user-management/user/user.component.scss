@@ -1,0 +1,21 @@
+.user-box {
+  border: 2px solid black;
+  margin: 10px;
+  padding-left: 15px;
+  width: 400px;
+}
+.container-box {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.action-btn {
+  margin-bottom: 10px;
+}
+
+.post-box {
+  border: 2px solid black;
+  margin: 10px;
+  padding-left: 15px;
+
+}

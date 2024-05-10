@@ -1,0 +1,11 @@
+<h2>Comments</h2>
+<div
+  class="row single-post"
+  *ngFor="let commentData of selectedPostsCommentList"
+>
+  <div class="col-md-12">
+    <h3>{{ commentData.name }}</h3>
+    <h6>{{ commentData.email }}</h6>
+    <p>{{ commentData.body }}</p>
+  </div>
+</div>

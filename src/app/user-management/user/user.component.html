@@ -1,0 +1,12 @@
+<!-- <pre>{{ userList | json }}</pre> -->
+
+<div class="p4">
+  <h1><i class="bi bi-people"></i> User list</h1>
+  <div class="row" *ngFor="let userData of userList">
+    <div class="col-md-12">
+      <a [routerLink]="['/user/details', userData.id]">
+        {{ userData.name }}
+      </a>
+    </div>
+  </div>
+</div>
