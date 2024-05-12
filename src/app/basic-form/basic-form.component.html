@@ -1,76 +1,108 @@
-<form [formGroup]="userForm" class="row" (ngSubmit)="onSubmit()">
-  <div class="col-lg-2">
-    <label class="form-label" for="name">Name:</label>
-    <input
-      class="form-control col-md-4"
-      formControlName="name"
-      id="name"
-      type="text"
-    />
-    <span *ngIf="userForm.get('name')?.invalid && userForm.get('name')?.touched"
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label" for="name">Name:</label>
+    <div class="col-sm-10">
+      <input
+        class="form-control col-md-4"
+        formControlName="name"
+        id="name"
+        type="text"
+      />
+    </div>
+  </div>
+  <div class="row">
+    <span
+      class="col-sm-12"
+      *ngIf="userForm.get('name')?.invalid && userForm.get('name')?.touched"
       >Please enter a valid name!</span
     >
   </div>
-  <div class="col-lg-2">
-    <label class="form-label" for="email">Email:</label>
-    <input
-      class="form-control col-md-4"
-      formControlName="email"
-      id="email"
-      type="text"
-    />
+
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label" for="email">Email:</label>
+    <div class="col-sm-10">
+      <input
+        class="form-control col-md-4"
+        formControlName="email"
+        id="email"
+        type="text"
+      />
+    </div>
+  </div>
+  <div class="row">
+    <span
+      class="col-sm-12"
+      *ngIf="userForm.get('email')?.invalid && userForm.get('email')?.touched"
+      >Please enter a valid email!</span
+    >
   </div>
   <div formGroupName="address">
-    <div class="col-lg-2">
-      <label class="form-label" for="street">Street:</label>
-      <input
-        class="form-control col-md-4"
-        formControlName="street"
-        id="street"
-        type="text"
-      />
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label" for="street">Street:</label>
+      <div class="col-sm-10">
+        <input
+          class="form-control col-md-4"
+          formControlName="street"
+          id="street"
+          type="text"
+        />
+      </div>
     </div>
-    <div class="col-lg-2">
-      <label class="form-label" for="city">City:</label>
-      <input
-        class="form-control col-md-4"
-        formControlName="city"
-        id="city"
-        type="text"
-      />
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label" for="city">City:</label>
+      <div class="col-sm-10">
+        <input
+          class="form-control col-md-4"
+          formControlName="city"
+          id="city"
+          type="text"
+        />
+      </div>
     </div>
-    <div class="col-lg-2">
-      <label class="form-label" for="pin">Pin:</label>
-      <input
-        class="form-control col-md-4"
-        formControlName="pin"
-        id="pin"
-        type="text"
-      />
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label" for="pin">Pin:</label>
+      <div class="col-sm-10">
+        <input
+          class="form-control col-md-4"
+          formControlName="pin"
+          id="pin"
+          type="text"
+        />
+      </div>
     </div>
-    <div class="col-lg-2">
-      <label class="form-label" for="country">Country:</label>
-      <input
-        class="form-control col-md-4"
-        formControlName="country"
-        id="country"
-        type="text"
-      />
-    </div>
-  </div>
-  <div class="col-lg-2">
-    <button class="btn btn-default" type="button" (click)="onAddHobby()">
-      Add Hobbies
-    </button>
-    <div
-      formArrayName="hobbies"
-      class="form-group"
-      *ngFor="let hobby of hobbiesControl.controls; let i = index"
-    >
-      <input type="text" [formControlName]="i" />
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label" for="country">Country:</label>
+      <div class="col-sm-10">
+        <input
+          class="form-control col-md-4"
+          formControlName="country"
+          id="country"
+          type="text"
+        />
+      </div>
     </div>
   </div>
-  <div class="col-lg-2">
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label" for="hobbies"> Hobbies:</label>
+
+    <div class="col-sm-8">
+      <div
+        formArrayName="hobbies"
+        class="form-group row"
+        *ngFor="let hobby of hobbiesControl.controls; let i = index"
+      >
+        <div class="col-sm-12">
+          <input type="text" [formControlName]="i" />
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-2">
+      <button class="btn btn-success" type="button" (click)="onAddHobby()">
+        Add Hobbies
+      </button>
+    </div>
+  </div>
+  <div class="form-group row">
     <button class="btn btn-primary" type="submit">Submit</button>
   </div>
 </form>

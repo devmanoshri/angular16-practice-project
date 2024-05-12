@@ -56,7 +56,7 @@ export class BasicFormComponent implements OnInit {
     //this.userData$ = this.userService.getSingleUser()
     this.userService.getSingleUser().subscribe({
       next: (userData: User) => {
-        const hobbies = ['playing', 'drawing'];
+        const hobbies = ['playing', 'drawing','hiking','sleeping'];
         hobbies.forEach(() => {
           this.hobbiesControl.push(this.formBuilder.control(''));
         });

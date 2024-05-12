@@ -5,8 +5,7 @@ import { BasicFormComponent } from './basic-form/basic-form.component';
 import { CommentsComponent } from './comments/comments.component';
 import { DetailsComponent } from './details/details.component';
 import { ListTodoComponent } from './list-todo/list-todo.component';
-import { UserDetailsComponent } from './user-management/user-details/user-details.component';
-import { UserComponent } from './user-management/user/user.component';
+
 const routes: Routes = [
   {
     path: '',
@@ -35,11 +34,10 @@ const routes: Routes = [
   },
   {
     path: 'user',
-    component: UserComponent,
-  },
-  {
-    path: 'user/details/:id',
-    component: UserDetailsComponent,
+    loadChildren: () =>
+      import('./user-management/user-management.module').then(
+        (m) => m.UserManagementModule,
+      ),
   },
 ];
 

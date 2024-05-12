@@ -1,20 +1,17 @@
+import { ErrorInterceptor } from './interceptor/error.interceptor';
+import { CommonModule } from '@angular/common';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { HttpClientModule } from '@angular/common/http';
 import { AddTodoComponent } from './add-todo/add-todo.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ListTodoComponent } from './list-todo/list-todo.component';
-import { DetailsComponent } from './details/details.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { TodoCheckComponent } from './todo-check/todo-check.component';
 import { BasicFormComponent } from './basic-form/basic-form.component';
 import { CommentsComponent } from './comments/comments.component';
-import { UserComponent } from './user-management/user/user.component';
-import { PostComponent } from './user-management/post/post.component';
-import { UserCommentComponent } from './user-management/user-comment/user-comment.component';
-import { UserDetailsComponent } from './user-management/user-details/user-details.component';
+import { DetailsComponent } from './details/details.component';
+import { ListTodoComponent } from './list-todo/list-todo.component';
+import { TodoCheckComponent } from './todo-check/todo-check.component';
 
 @NgModule({
   declarations: [
@@ -25,10 +22,6 @@ import { UserDetailsComponent } from './user-management/user-details/user-detail
     TodoCheckComponent,
     BasicFormComponent,
     CommentsComponent,
-    UserComponent,
-    PostComponent,
-    UserCommentComponent,
-    UserDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,8 +29,15 @@ import { UserDetailsComponent } from './user-management/user-details/user-detail
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    CommonModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

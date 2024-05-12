@@ -10,7 +10,7 @@ import { User } from '../models/user.model';
   providedIn: 'root',
 })
 export class UserManagementService {
-  baseUrl = 'https://jsonplaceholder.typicode.com';
+  baseUrl = 'http://jsonplaceholder.typicode.com';
   constructor(private httpClient: HttpClient) {}
 
   getUserList(): Observable<User[]> {
