@@ -1,4 +1,3 @@
-import { ErrorInterceptor } from './interceptor/error.interceptor';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
@@ -10,18 +9,21 @@ import { AppComponent } from './app.component';
 import { BasicFormComponent } from './basic-form/basic-form.component';
 import { CommentsComponent } from './comments/comments.component';
 import { DetailsComponent } from './details/details.component';
+import { ErrorInterceptor } from './interceptor/error.interceptor';
 import { ListTodoComponent } from './list-todo/list-todo.component';
+import { SearchComponent } from './search/search.component';
 import { TodoCheckComponent } from './todo-check/todo-check.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
     AddTodoComponent,
-    ListTodoComponent,
-    DetailsComponent,
-    TodoCheckComponent,
+    AppComponent,
     BasicFormComponent,
     CommentsComponent,
+    DetailsComponent,
+    ListTodoComponent,
+    SearchComponent,
+    TodoCheckComponent,
   ],
   imports: [
     BrowserModule,

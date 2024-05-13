@@ -5,6 +5,7 @@ import { BasicFormComponent } from './basic-form/basic-form.component';
 import { CommentsComponent } from './comments/comments.component';
 import { DetailsComponent } from './details/details.component';
 import { ListTodoComponent } from './list-todo/list-todo.component';
+import { SearchComponent } from './search/search.component';
 
 const routes: Routes = [
   {
@@ -31,6 +32,10 @@ const routes: Routes = [
   {
     path: 'comments',
     component: CommentsComponent,
+  },
+  {
+    path: 'search',
+    component: SearchComponent,
   },
   {
     path: 'user',
