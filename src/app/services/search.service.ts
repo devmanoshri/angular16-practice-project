@@ -12,12 +12,12 @@ export class SearchService {
   constructor(private httpClient: HttpClient) {}
 
   getSearchedResult(searchValue: string): Observable<Post[]> {
+    console.log(
+      'inside service',
+      `${this.baseUrl}/posts?title_like=${searchValue}`,
+    );
     return this.httpClient.get<Post[]>(
       `${this.baseUrl}/posts?title_like=${searchValue}`,
     );
-
-    // return this.httpClient.get<Post[]>(
-    //   "https://jsonplaceholder.typicode.com/posts?title_like=sunt"
-    // );
   }
 }

@@ -22,8 +22,10 @@
     </div>
   </form>
 </div>
-<!-- <pre>{{ searchedData | json }}</pre> -->
+<div *ngIf="searchValue">
+  <!-- <pre>{{ searchedData | json }}</pre> -->
 
-<div class="row" *ngFor="let data of searchedData">
-  <div class="col-sm-12">{{ searchedData }}</div>
+  <div class="row" *ngFor="let data of searchedData; let i = index">
+    <div class="col-sm-12">{{ searchedData[0].title }}</div>
+  </div>
 </div>

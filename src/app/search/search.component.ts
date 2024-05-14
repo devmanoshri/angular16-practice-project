@@ -23,20 +23,19 @@ export class SearchComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-   // this.searchResult();
+    // this.searchResult();
   }
 
   searchResult() {
+    // console.log(this.searchValue);
     this.searchService.getSearchedResult(this.searchValue).subscribe({
-      next: (data:Post[]) => {
+      next: (data: Post[]) => {
         this.searchedData = data;
       },
     });
   }
   onSearchSubmit() {
     this.searchValue = this.searchForm.value.search ?? '';
-    console.log(this.searchValue);
     this.searchResult();
-
   }
 }
