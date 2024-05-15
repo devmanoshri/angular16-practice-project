@@ -18,37 +18,39 @@ export class SearchComponent implements OnInit {
   });
 
   isOpenDropDown = false;
+  isSearchKeySelected = false;
   constructor(
     private searchService: SearchService,
     private formBuilder: FormBuilder,
   ) {}
 
   ngOnInit(): void {
-    // this.searchResult();
+    this.searchValueChange();
   }
 
   searchResult() {
-    // console.log(this.searchValue);
     this.searchService.getSearchedResult(this.searchValue).subscribe({
       next: (data: Post[]) => {
         this.searchedData = data;
       },
     });
   }
-  onSearchSubmit() {
-    this.searchValue = this.searchForm.value.search ?? '';
-    this.searchResult();
-    this.isOpenDropDown = true;
-  }
+
   selectSearchKey(key: string) {
-    // this.isOpenDropDown=!this.isOpenDropDown
-    console.log(key);
     this.searchValue = key ?? '';
     this.searchResult();
     this.searchForm.patchValue({ search: key });
     this.isOpenDropDown = false;
+    this.isSearchKeySelected = true;
   }
   toggleDropDown() {
     this.isOpenDropDown = !this.isOpenDropDown;
+  }
+  searchValueChange() {
+    this.searchForm.get('search')?.valueChanges.subscribe((value: string) => {
+      this.searchValue = value;
+      this.searchResult();
+      this.isOpenDropDown = true;
+    });
   }
 }
