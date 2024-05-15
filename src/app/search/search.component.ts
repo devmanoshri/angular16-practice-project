@@ -17,6 +17,7 @@ export class SearchComponent implements OnInit {
     search: ['', Validators.required],
   });
 
+  isOpenDropDown = false;
   constructor(
     private searchService: SearchService,
     private formBuilder: FormBuilder,
@@ -37,5 +38,17 @@ export class SearchComponent implements OnInit {
   onSearchSubmit() {
     this.searchValue = this.searchForm.value.search ?? '';
     this.searchResult();
+    this.isOpenDropDown = true;
+  }
+  selectSearchKey(key: string) {
+    // this.isOpenDropDown=!this.isOpenDropDown
+    console.log(key);
+    this.searchValue = key ?? '';
+    this.searchResult();
+    this.searchForm.patchValue({ search: key });
+    this.isOpenDropDown = false;
+  }
+  toggleDropDown() {
+    this.isOpenDropDown = !this.isOpenDropDown;
   }
 }

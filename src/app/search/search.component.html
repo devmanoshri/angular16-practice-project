@@ -1,31 +1,42 @@
-<div class="search">
-  <form
-    class="form-inline"
-    [formGroup]="searchForm"
-    (ngSubmit)="onSearchSubmit()"
-  >
-    <div class="row">
-      <div class="col-sm-9 form-group">
+
+  <div class="search mb-5">
+    <form
+      class="form-inline"
+      [formGroup]="searchForm"
+      (ngSubmit)="onSearchSubmit()"
+    >
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">
+            <i class="bi bi-search"></i>
+          </span>
+        </div>
         <input
           class="form-control"
           type="text"
           formControlName="search"
           placeholder="Search "
           aria-label="Search"
+          (click)="toggleDropDown()"
         />
       </div>
-      <div class="col-sm-3">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-          Search
-        </button>
+      <div class="dropdown-container" *ngIf="isOpenDropDown">
+        <div
+          *ngFor="let post_title of searchedData; let i = index"
+          class="post_title_dd"
+          (click)="selectSearchKey(searchedData[i].title)"
+        >
+          {{ searchedData[i].title }}
+        </div>
+      </div>
+    </form>
+  </div>
+  <div *ngIf="searchValue">
+    <div class="card mb-3" *ngFor="let data of searchedData; let i = index">
+      <div class="card-header">{{ searchedData[i].title }}</div>
+      <div class="card-body">
+        <div class="card-text">{{ searchedData[i].body }}</div>
       </div>
     </div>
-  </form>
-</div>
-<div *ngIf="searchValue">
-  <!-- <pre>{{ searchedData | json }}</pre> -->
-
-  <div class="row" *ngFor="let data of searchedData; let i = index">
-    <div class="col-sm-12">{{ searchedData[0].title }}</div>
   </div>
-</div>
+
