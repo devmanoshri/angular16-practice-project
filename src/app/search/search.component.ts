@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import {
   debounceTime,
@@ -14,7 +14,7 @@ import { SearchService } from './../services/search.service';
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss'],
 })
-export class SearchComponent implements OnInit {
+export class SearchComponent implements OnDestroy {
   searchValue = '';
   searchedData = [] as Post[];
   selectedData = {} as Post;
@@ -65,5 +65,8 @@ export class SearchComponent implements OnInit {
           this.searchedData = data;
         },
       });
+  }
+  ngOnDestroy(): void {
+    this.subscribe.unsubscribe();
   }
 }
