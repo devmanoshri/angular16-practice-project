@@ -1,11 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import {
-  debounceTime,
-  distinctUntilChanged,
-  Subscription,
-  switchMap,
-} from 'rxjs';
+import { Subscription } from 'rxjs';
 import { Post } from '../models/post.model';
 import { SearchService } from './../services/search.service';
 
@@ -17,7 +12,6 @@ import { SearchService } from './../services/search.service';
 export class SearchComponent implements OnInit {
   searchValue = '';
   searchedData = [] as Post[];
-  selectedData = {} as Post;
   subscribe = new Subscription();
   searchForm = this.formBuilder.nonNullable.group({
     search: ['', Validators.required],
@@ -25,8 +19,6 @@ export class SearchComponent implements OnInit {
 
   isOpenDropDown = false;
   isSearchKeySelected = false;
-  addSubscription = new Subscription();
-
   constructor(
     private searchService: SearchService,
     private formBuilder: FormBuilder,
@@ -36,34 +28,29 @@ export class SearchComponent implements OnInit {
     this.searchValueChange();
   }
 
-  selectSearchKey(key: number) {
-    this.selectedData = this.searchedData.filter((data) => data.id === key)[0];
-    this.searchForm.patchValue(
-      { search: this.selectedData.title },
-      { emitEvent: false },
-    );
+  searchResult() {
+    this.searchService.getSearchedResult(this.searchValue).subscribe({
+      next: (data: Post[]) => {
+        this.searchedData = data;
+      },
+    });
+  }
+
+  selectSearchKey(key: string) {
+    this.searchValue = key ?? '';
+    this.searchResult();
+    this.searchForm.patchValue({ search: key });
     this.isOpenDropDown = false;
     this.isSearchKeySelected = true;
   }
   toggleDropDown() {
     this.isOpenDropDown = !this.isOpenDropDown;
   }
-  searchValueChange(): void {
-    this.searchForm
-      .get('search')
-      ?.valueChanges.pipe(
-        debounceTime(600),
-        distinctUntilChanged(),
-        switchMap((key) => {
-          this.searchValue = key;
-          this.isOpenDropDown = true;
-          return this.searchService.getSearchedResult(this.searchValue);
-        }),
-      )
-      .subscribe({
-        next: (data: Post[]) => {
-          this.searchedData = data;
-        },
-      });
+  searchValueChange() {
+    this.searchForm.get('search')?.valueChanges.subscribe((value: string) => {
+      this.searchValue = value;
+      this.searchResult();
+      this.isOpenDropDown = true;
+    });
   }
 }

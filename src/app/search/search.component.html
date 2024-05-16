@@ -17,20 +17,20 @@
     </div>
     <div class="dropdown-container" *ngIf="isOpenDropDown">
       <div
-        *ngFor="let post_title of searchedData; let i = index"
-        class="post_title_dd"
-        (click)="selectSearchKey(searchedData[i].title)"
+        *ngFor="let postTitle of searchedData"
+        class="post-title-dd"
+        (click)="selectSearchKey(postTitle.id)"
       >
-        {{ searchedData[i].title }}
+        {{ postTitle.title }}
       </div>
     </div>
   </form>
 </div>
-<div *ngIf="isSearchKeySelected">
-  <div class="card mb-3" *ngFor="let data of searchedData; let i = index">
-    <div class="card-header">{{ searchedData[i].title }}</div>
+<div *ngIf="isSearchKeySelected && selectedData">
+  <div class="card mb-3">
+    <div class="card-header">{{ selectedData.title }}</div>
     <div class="card-body">
-      <div class="card-text">{{ searchedData[i].body }}</div>
+      <div class="card-text">{{ selectedData.body }}</div>
     </div>
   </div>
 </div>

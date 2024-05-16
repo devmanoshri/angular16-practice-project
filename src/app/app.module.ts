@@ -29,7 +29,6 @@ import { TodoCheckComponent } from './todo-check/todo-check.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule,
     ReactiveFormsModule,
     CommonModule,
   ],
