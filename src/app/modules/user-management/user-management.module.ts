@@ -7,6 +7,7 @@ import { UserCommentComponent } from './user-comment/user-comment.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { UserManagementRoutingModule } from './user-management-routing.module';
 import { UserComponent } from './user/user.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { UserComponent } from './user/user.component';
     HttpClientModule,
     ReactiveFormsModule,
     UserManagementRoutingModule,
+    SharedModule,
   ],
 })
 export class UserManagementModule {}

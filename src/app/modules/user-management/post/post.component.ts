@@ -1,6 +1,6 @@
 import { Subscription } from 'rxjs';
-import { Post } from './../../models/post.model';
-import { UserManagementService } from './../../services/user-management.service';
+import { Post } from '../../../models/post.model';
+import { UserManagementService } from '../../../services/user-management.service';
 import { Component, Input } from '@angular/core';
 
 @Component({

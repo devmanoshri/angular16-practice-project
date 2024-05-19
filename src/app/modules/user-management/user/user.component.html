@@ -27,3 +27,10 @@
 <button class="btn btn-primary" (click)="fetchUserList()">
   Fetch User List
 </button>
+<app-card *ngFor="let userData of userList">
+  <h5 class="card-title">
+    <a [routerLink]="['/user/details', userData.id]">
+      {{ userData.name }}
+    </a>
+  </h5>
+</app-card>

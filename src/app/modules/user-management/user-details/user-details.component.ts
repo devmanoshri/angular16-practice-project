@@ -12,7 +12,7 @@ import {
 import { Album } from 'src/app/models/album.model';
 import { Post } from 'src/app/models/post.model';
 import { User } from 'src/app/models/user.model';
-import { UserManagementService } from './../../services/user-management.service';
+import { UserManagementService } from '../../../services/user-management.service';
 
 @Component({
   selector: 'app-user-details',

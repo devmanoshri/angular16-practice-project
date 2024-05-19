@@ -40,7 +40,7 @@ const routes: Routes = [
   {
     path: 'user',
     loadChildren: () =>
-      import('./user-management/user-management.module').then(
+      import('./modules/user-management/user-management.module').then(
         (m) => m.UserManagementModule,
       ),
   },

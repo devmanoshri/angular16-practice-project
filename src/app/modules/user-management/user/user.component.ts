@@ -1,4 +1,4 @@
-import { UserManagementService } from './../../services/user-management.service';
+import { UserManagementService } from '../../../services/user-management.service';
 import { Component, OnDestroy } from '@angular/core';
 import { Subscription, delay } from 'rxjs';
 import { User } from 'src/app/models/user.model';

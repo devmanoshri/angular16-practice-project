@@ -1,5 +1,5 @@
 import { Subscription } from 'rxjs';
-import { UserManagementService } from './../../services/user-management.service';
+import { UserManagementService } from '../../../services/user-management.service';
 import { Component, Input } from '@angular/core';
 import { Comments } from 'src/app/models/comments.model';
 
