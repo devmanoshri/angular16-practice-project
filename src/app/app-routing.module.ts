@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AddTodoComponent } from './add-todo/add-todo.component';
-import { BasicFormComponent } from './basic-form/basic-form.component';
-import { CommentsComponent } from './comments/comments.component';
-import { DetailsComponent } from './details/details.component';
-import { ListTodoComponent } from './list-todo/list-todo.component';
-import { SearchComponent } from './search/search.component';
+import { AddTodoComponent } from './components/add-todo/add-todo.component';
+import { BasicFormComponent } from './components/basic-form/basic-form.component';
+import { CommentsComponent } from './components/comments/comments.component';
+import { DetailsComponent } from './components/details/details.component';
+import { ListTodoComponent } from './components/list-todo/list-todo.component';
+import { SearchComponent } from './components/search/search.component';
 
 const routes: Routes = [
   {
@@ -37,12 +37,18 @@ const routes: Routes = [
     path: 'search',
     component: SearchComponent,
   },
+
   {
     path: 'user',
     loadChildren: () =>
       import('./modules/user-management/user-management.module').then(
         (m) => m.UserManagementModule,
       ),
+  },
+  {
+    path: 'albums',
+    loadChildren: () =>
+      import('./modules/album/album.module').then((m) => m.AlbumModule),
   },
 ];
 

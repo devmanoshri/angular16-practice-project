@@ -6,8 +6,8 @@ import {
   Subscription,
   switchMap,
 } from 'rxjs';
-import { Post } from '../models/post.model';
-import { SearchService } from './../services/search.service';
+import { Post } from '../../models/post.model';
+import { SearchService } from '../../services/search.service';
 
 @Component({
   selector: 'app-search',

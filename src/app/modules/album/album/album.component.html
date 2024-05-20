@@ -1,0 +1,31 @@
+<!-- <pre>{{ albumList | json }}</pre> -->
+<h2>Album of {{ userName }}</h2>
+<hr />
+<div class="row">
+  <div class="col-sm-6">
+    <h3>Album List</h3>
+    <div class="album-box row">
+      <div class="col-4" *ngFor="let singleAlbum of albumList">
+        <div class="card" (click)="showPhotos(singleAlbum.id)">
+          <img
+            class="card-img-top"
+            src="../../../assets/images/placeholder.jpg"
+            alt="Card image cap"
+          />
+          <div class="card-body">
+            <div class="card-text">
+              {{ singleAlbum.title }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <h3>Photo List</h3>
+    <div *ngIf="selectedAlbumId; else noPhoto">
+      <app-photo [selectedAlbumId]="selectedAlbumId"></app-photo>
+    </div>
+    <ng-template #noPhoto>Please select Album first!</ng-template>
+  </div>
+</div>

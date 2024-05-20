@@ -1,8 +1,8 @@
 import { Component, OnDestroy } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { Comments } from '../models/comments.model';
-import { CommentsService } from './../services/comments.service';
+import { Comments } from '../../models/comments.model';
+import { CommentsService } from '../../services/comments.service';
 
 @Component({
   selector: 'app-comments',
