@@ -12,7 +12,7 @@ export class BooksComponent implements OnInit, OnDestroy {
   bookList = [] as Book[];
   subscription = new Subscription();
   genreList = [] as string[];
-  selectedGenre = '';
+  selectedGenreList = [] as string[];
   constructor(private bookService: BooksService) {}
 
   ngOnInit(): void {
@@ -29,11 +29,23 @@ export class BooksComponent implements OnInit, OnDestroy {
             genreList = [...book.genre, ...genreList];
           });
           this.genreList = Array.from(new Set(genreList));
-          console.log(this.genreList);
         },
       }),
     );
   }
 
-  ngOnDestroy(): void {}
+  filterBookListOnGenre(genre: string): void {
+    if (!this.selectedGenreList.includes(genre)) {
+      this.selectedGenreList = [...this.selectedGenreList, genre];
+    } else {
+      this.selectedGenreList = this.selectedGenreList.filter(
+        (selectedGenre) => selectedGenre !== genre,
+      );
+    }
+    console.log(this.selectedGenreList);
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
 }

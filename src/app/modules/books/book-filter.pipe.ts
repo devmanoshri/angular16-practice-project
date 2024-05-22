@@ -5,12 +5,22 @@ import { Book } from 'src/app/models/book.model';
   name: 'bookFilter',
 })
 export class BookFilterPipe implements PipeTransform {
-  transform(bookList: Book[], selectedGenre: string): Book[] {
-    if (!selectedGenre) {
+  transform(bookList: Book[], selectedGenreList: string[]): Book[] {
+    if (!selectedGenreList.length) {
       return bookList;
     }
     return bookList.filter((book) => {
-      return book.genre.includes(selectedGenre);
+      return this.isGenreExist(book.genre, selectedGenreList);
     });
+  }
+
+  isGenreExist(genreList: string[], selectedGenreList: string[]): boolean {
+    let isMatchFound = false;
+    selectedGenreList.forEach((selectedGenre) => {
+      if (genreList.includes(selectedGenre)) {
+        isMatchFound = true;
+      }
+    });
+    return isMatchFound;
   }
 }
