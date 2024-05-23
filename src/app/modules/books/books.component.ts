@@ -28,6 +28,7 @@ export class BooksComponent implements OnInit, OnDestroy {
           this.bookList.forEach((book) => {
             genreList = [...book.genre, ...genreList];
           });
+
           this.genreList = Array.from(new Set(genreList));
         },
       }),
@@ -42,7 +43,6 @@ export class BooksComponent implements OnInit, OnDestroy {
         (selectedGenre) => selectedGenre !== genre,
       );
     }
-    console.log(this.selectedGenreList);
   }
 
   ngOnDestroy(): void {
