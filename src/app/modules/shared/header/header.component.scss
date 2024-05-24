@@ -1,0 +1,14 @@
+.logo {
+  font-size: 28px;
+  margin-right: 16px;
+}
+ul {
+  display: flex;
+  list-style-type: none;
+  gap: 20px;
+  font-size: 20px;
+  cursor: pointer;
+  li.active {
+    color: red;
+  }
+}

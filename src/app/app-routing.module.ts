@@ -1,11 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AddTodoComponent } from './components/add-todo/add-todo.component';
 import { BasicFormComponent } from './components/basic-form/basic-form.component';
-import { CommentsComponent } from './components/comments/comments.component';
-import { DetailsComponent } from './components/details/details.component';
 import { ListTodoComponent } from './components/list-todo/list-todo.component';
 import { SearchComponent } from './components/search/search.component';
+import { NotFoundComponent } from './modules/shared/not-found/not-found.component';
 
 const routes: Routes = [
   {
@@ -13,31 +11,21 @@ const routes: Routes = [
     redirectTo: 'dashboard',
     pathMatch: 'full',
   },
-  {
-    path: 'add',
-    component: AddTodoComponent,
-  },
+
   {
     path: 'dashboard',
     component: ListTodoComponent,
   },
-  {
-    path: 'details',
-    component: DetailsComponent,
-  },
+
   {
     path: 'form',
     component: BasicFormComponent,
   },
-  {
-    path: 'comments',
-    component: CommentsComponent,
-  },
+
   {
     path: 'search',
     component: SearchComponent,
   },
-
   {
     path: 'user',
     loadChildren: () =>
@@ -54,6 +42,15 @@ const routes: Routes = [
     path: 'books',
     loadChildren: () =>
       import('./modules/books/books.module').then((m) => m.BooksModule),
+  },
+  {
+    path: 'country',
+    loadChildren: () =>
+      import('./modules/country/country.module').then((m) => m.CountryModule),
+  },
+  {
+    path: '**',
+    component: NotFoundComponent,
   },
 ];
 
