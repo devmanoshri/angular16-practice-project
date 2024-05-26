@@ -13,7 +13,7 @@ export class CountriesComponent implements OnInit, OnDestroy {
   countryList = [] as Country[];
   subscription = new Subscription();
   numberOfPage!: number;
-  pageSize = 50;
+  pageSize = 10;
   pageArray = [] as number[];
   startIndex = 0;
   countryAbbr = countryAbbr;
